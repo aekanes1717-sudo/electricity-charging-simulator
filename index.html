@@ -3,133 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محاكاة طرق التكهرب</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>محاكاة التكهرب المتقدمة - Advanced Electricity Charging Simulator</title>
+    <link rel="stylesheet" href="premium-styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>⚡ محاكاة طرق التكهرب الثلاث</h1>
-            <p class="subtitle">اكتشف كيف تتكهرب الأجسام بطرق مختلفة</p>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="main-container">
+        <!-- Header Premium -->
+        <header class="premium-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">⚡</div>
+                    <div class="logo-text">
+                        <h1>محاكاة التكهرب المتقدمة</h1>
+                        <p>Advanced Electricity Charging Simulator</p>
+                    </div>
+                </div>
+                <div class="header-subtitle">
+                    استكشف أسرار الكهرباء الساكنة بتفاعل حقيقي وعلمي
+                </div>
+            </div>
         </header>
 
-        <div class="methods-selector">
-            <button class="method-btn active" data-method="friction">🔄 الدلك</button>
-            <button class="method-btn" data-method="contact">🤝 اللمس</button>
-            <button class="method-btn" data-method="induction">📡 التأثير</button>
-        </div>
+        <!-- Navigation Tabs -->
+        <nav class="premium-nav">
+            <div class="nav-container">
+                <button class="nav-tab active" data-method="friction">
+                    <span class="tab-icon">🔄</span>
+                    <span class="tab-name">طريقة الدلك</span>
+                    <span class="tab-desc">Friction</span>
+                </button>
+                <button class="nav-tab" data-method="contact">
+                    <span class="tab-icon">🤝</span>
+                    <span class="tab-name">طريقة اللمس</span>
+                    <span class="tab-desc">Contact</span>
+                </button>
+                <button class="nav-tab" data-method="induction">
+                    <span class="tab-icon">📡</span>
+                    <span class="tab-name">طريقة التأثير</span>
+                    <span class="tab-desc">Induction</span>
+                </button>
+            </div>
+        </nav>
 
-        <!-- طريقة الدلك -->
-        <div class="method-section active" id="friction-section">
-            <h2>طريقة الدلك (Friction)</h2>
-            <p class="description">
-                عند دلك جسم معزول بجسم آخر، تنتقل الإلكترونات من جسم إلى آخر مما يسبب تكهربهما.
-            </p>
-            
-            <div class="simulation-area">
-                <div class="instruction">
-                    👉 اسحب فوق الكرة لدلكها (استخدم الماوس أو اللمس)
-                </div>
-                
-                <canvas id="frictionCanvas" width="500" height="300"></canvas>
-                
-                <div class="controls">
-                    <button id="frictionReset" class="btn-reset">🔄 إعادة تعيين</button>
-                    <div class="info-box">
-                        <p><strong>عدد الإلكترونات المنقولة:</strong> <span id="frictionElectrons">0</span></p>
-                        <p><strong>الشحنة:</strong> <span id="frictionCharge">محايد</span></p>
+        <!-- Content Sections -->
+        <div class="content-wrapper">
+
+            <!-- === FRICTION SECTION === -->
+            <section class="method-section active" id="friction-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2>🔄 طريقة الدلك (Friction Method)</h2>
+                        <p class="section-intro">عند دلك جسم معزول بآخر، تنتقل الإلكترونات بفعل الاحتكاك</p>
+                    </div>
+
+                    <div class="simulation-grid">
+                        <!-- Canvas -->
+                        <div class="canvas-wrapper">
+                            <div class="canvas-header">
+                                <span class="canvas-title">المحاكاة التفاعلية</span>
+                                <span class="canvas-hint">👉 اسحب فوق الكرة لدلكها</span>
+                            </div>
+                            <canvas id="frictionCanvas" width="600" height="400"></canvas>
+                            <div class="canvas-footer">
+                                <div class="meter-bar">
+                                    <div class="meter-label">مستوى الشحنة</div>
+                                    <div class="meter-container">
+                                        <div class="meter-fill" id="frictionMeter"></div>
+                                    </div>
+                                    <div class="meter-value" id="frictionMeterValue">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Panel -->
+                        <div class="info-panel">
+                            <div class="panel-title">📊 معلومات التجربة</div>
+                            
+                            <div class="info-card charge-card">
+                                <div class="card-header">الشحنة الكهربائية</div>
+                                <div class="card-value" id="frictionChargeStatus">محايد</div>
+                                <div class="card-detail" id="frictionChargeDetail">0 إلكترون</div>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="card-header">عدد الإلكترونات</div>
+                                <div class="card-value" id="frictionElectronCount">0</div>
+                                <div class="card-detail">/ 100 إلكترون</div>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="card-header">الطاقة المستخدمة</div>
+                                <div class="card-value" id="frictionEnergy">0</div>
+                                <div class="card-detail">جول</div>
+                            </div>
+
+                            <div class="control-buttons">
+                                <button class="btn-primary" id="frictionReset">
+                                    <span>🔄</span> إعادة تعيين
+                                </button>
+                            </div>
+
+                            <div class="science-box">
+                                <div class="science-title">🔬 الشرح العلمي</div>
+                                <ul class="science-list">
+                                    <li>الدلك يسبب احتكاك ميكانيكي</li>
+                                    <li>الاحتكاك ينقل الطاقة</li>
+                                    <li>الإلكترونات تنتقل بين الذرات</li>
+                                    <li>النتيجة: تكهرب بشحنات متعاكسة</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="explanation">
-                <h3>📚 التفسير العلمي:</h3>
-                <ul>
-                    <li>الدلك يسبب احتكاك بين الذرات</li>
-                    <li>الاحتكاك يعطي طاقة للإلكترونات</li>
-                    <li>الإلكترونات تنتقل من مادة إلى أخرى</li>
-                    <li>النتيجة: تكهرب الجسمين بشحنات متعاكسة</li>
-                </ul>
-            </div>
-        </div>
+            <!-- === CONTACT SECTION === -->
+            <section class="method-section" id="contact-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2>🤝 طريقة اللمس (Contact Method)</h2>
+                        <p class="section-intro">عند لمس جسم مكهرب لآخر محايد، تتوزع الشحنات بينهما</p>
+                    </div>
 
-        <!-- طريقة اللمس -->
-        <div class="method-section" id="contact-section">
-            <h2>طريقة اللمس (Conduction)</h2>
-            <p class="description">
-                عند لمس جسم مكهرب لجسم محايد، تنتقل الشحنات مباشرة بينهما.
-            </p>
-            
-            <div class="simulation-area">
-                <div class="instruction">
-                    👉 اضغط على الكرة المكهربة لمس الكرة المحايدة
-                </div>
-                
-                <canvas id="contactCanvas" width="500" height="300"></canvas>
-                
-                <div class="controls">
-                    <button id="contactCharge" class="btn-action">⚡ شحن الكرة الأولى</button>
-                    <button id="contactTouch" class="btn-action" disabled>🤝 أوصل الكرتين</button>
-                    <button id="contactReset" class="btn-reset">🔄 إعادة تعيين</button>
-                    <div class="info-box">
-                        <p><strong>كرة 1:</strong> <span id="contactBall1">محايد</span></p>
-                        <p><strong>كرة 2:</strong> <span id="contactBall2">محايد</span></p>
+                    <div class="simulation-grid">
+                        <div class="canvas-wrapper">
+                            <div class="canvas-header">
+                                <span class="canvas-title">المحاكاة التفاعلية</span>
+                                <span class="canvas-hint">👉 شحّن ثم أوصل الكرتين</span>
+                            </div>
+                            <canvas id="contactCanvas" width="600" height="400"></canvas>
+                            <div class="canvas-footer">
+                                <div class="meter-bar">
+                                    <div class="meter-label">نقل الشحنة</div>
+                                    <div class="meter-container">
+                                        <div class="meter-fill" id="contactMeter"></div>
+                                    </div>
+                                    <div class="meter-value" id="contactMeterValue">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-panel">
+                            <div class="panel-title">📊 معلومات التجربة</div>
+                            
+                            <div class="balls-info">
+                                <div class="ball-info">
+                                    <div class="ball-indicator" id="ball1Indicator"></div>
+                                    <div class="ball-info-text">
+                                        <div class="ball-label">الكرة 1 (المصدر)</div>
+                                        <div class="ball-charge" id="contactBall1Charge">محايد</div>
+                                        <div class="ball-detail" id="contactBall1Detail">0 شحنة</div>
+                                    </div>
+                                </div>
+
+                                <div class="transfer-arrow">→</div>
+
+                                <div class="ball-info">
+                                    <div class="ball-indicator" id="ball2Indicator"></div>
+                                    <div class="ball-info-text">
+                                        <div class="ball-label">الكرة 2 (المستقبل)</div>
+                                        <div class="ball-charge" id="contactBall2Charge">محايد</div>
+                                        <div class="ball-detail" id="contactBall2Detail">0 شحنة</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-buttons">
+                                <button class="btn-primary" id="contactCharge">
+                                    <span>⚡</span> شحن الكرة 1
+                                </button>
+                                <button class="btn-primary" id="contactTouch" disabled>
+                                    <span>🤝</span> أوصل الكرتين
+                                </button>
+                                <button class="btn-secondary" id="contactReset">
+                                    <span>🔄</span> إعادة تعيين
+                                </button>
+                            </div>
+
+                            <div class="science-box">
+                                <div class="science-title">🔬 الشرح العلمي</div>
+                                <ul class="science-list">
+                                    <li>الجسم المكهرب له شحنات زائدة</li>
+                                    <li>اللمس ينشئ مسار توصيل</li>
+                                    <li>الشحنات تنتقل مباشرة</li>
+                                    <li>التوازن: توزيع متساوي</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="explanation">
-                <h3>📚 التفسير العلمي:</h3>
-                <ul>
-                    <li>الجسم المكهرب يحتوي على شحنات زائدة</li>
-                    <li>عند اللمس، تنتقل الشحنات مباشرة</li>
-                    <li>الشحنات توزعت بين الجسمين</li>
-                    <li>كلا الجسمين يصبح مكهربا بنفس نوع الشحنة</li>
-                </ul>
-            </div>
-        </div>
+            <!-- === INDUCTION SECTION === -->
+            <section class="method-section" id="induction-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2>📡 طريقة التأثير (Induction Method)</h2>
+                        <p class="section-intro">المجال الكهربائي يؤثر على الأجسام القريبة دون لمس مباشر</p>
+                    </div>
 
-        <!-- طريقة التأثير -->
-        <div class="method-section" id="induction-section">
-            <h2>طريقة التأثير (Induction)</h2>
-            <p class="description">
-                عند اقتراب جسم مكهرب من جسم محايد، تتحرك الإلكترونات بداخله دون انتقال مباشر.
-            </p>
-            
-            <div class="simulation-area">
-                <div class="instruction">
-                    👉 حرك الكرة المكهربة بالقرب من الكرة المحايدة
-                </div>
-                
-                <canvas id="inductionCanvas" width="500" height="300"></canvas>
-                
-                <div class="controls">
-                    <button id="inductionCharge" class="btn-action">⚡ شحن الكرة</button>
-                    <button id="inductionReset" class="btn-reset">🔄 إعادة تعيين</button>
-                    <div class="info-box">
-                        <p><strong>مسافة القرب:</strong> <span id="inductionDistance">بعيدة</span></p>
-                        <p><strong>الكرة المحايدة:</strong> <span id="inductionNeutral">محايد</span></p>
-                        <p><strong>ملاحظة:</strong> الكرة تعود محايد عند الابتعاد</p>
+                    <div class="simulation-grid">
+                        <div class="canvas-wrapper">
+                            <div class="canvas-header">
+                                <span class="canvas-title">المحاكاة التفاعلية</span>
+                                <span class="canvas-hint">👉 حرك الكرة المكهربة بالقرب من الأخرى</span>
+                            </div>
+                            <canvas id="inductionCanvas" width="600" height="400"></canvas>
+                            <div class="canvas-footer">
+                                <div class="meter-bar">
+                                    <div class="meter-label">قوة المجال الكهربائي</div>
+                                    <div class="meter-container">
+                                        <div class="meter-fill" id="inductionMeter"></div>
+                                    </div>
+                                    <div class="meter-value" id="inductionMeterValue">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-panel">
+                            <div class="panel-title">📊 معلومات التجربة</div>
+                            
+                            <div class="info-card">
+                                <div class="card-header">الكرة المكهربة</div>
+                                <div class="card-value" id="inductionChargedStatus">غير مشحونة</div>
+                                <div class="card-detail">المصدر</div>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="card-header">المسافة بين الكرتين</div>
+                                <div class="card-value" id="inductionDistance">بعيدة</div>
+                                <div class="card-detail" id="inductionDistanceVal">250 بكسل</div>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="card-header">الكرة المحايدة</div>
+                                <div class="card-value" id="inductionNeutralStatus">محايد</div>
+                                <div class="card-detail">متأثر بالمجال</div>
+                            </div>
+
+                            <div class="control-buttons">
+                                <button class="btn-primary" id="inductionCharge">
+                                    <span>⚡</span> شحن الكرة
+                                </button>
+                                <button class="btn-secondary" id="inductionReset">
+                                    <span>🔄</span> إعادة تعيين
+                                </button>
+                            </div>
+
+                            <div class="science-box">
+                                <div class="science-title">🔬 الشرح العلمي</div>
+                                <ul class="science-list">
+                                    <li>المجال الكهربائي ينتشر حول الشحنة</li>
+                                    <li>الإلكترونات تتحرك بدون انتقال</li>
+                                    <li>فصل الشحنات مؤقت</li>
+                                    <li>تعود للحالة الطبيعية عند الابتعاد</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="explanation">
-                <h3>📚 التفسير العلمي:</h3>
-                <ul>
-                    <li>المجال الكهربائي للجسم المكهرب يؤثر على الجسم المحايد</li>
-                    <li>الإلكترونات تتحرك داخل الجسم لكن لا تنتقل</li>
-                    <li>يحدث فصل للشحنات (أحد الجانبين موجب والآخر سالب)</li>
-                    <li>عند الابتعاد، تعود الإلكترونات لحالتها الطبيعية</li>
-                </ul>
-            </div>
         </div>
 
-        <footer>
-            <p>🎓 تطبيق تعليمي لطلاب الفيزياء | حقوق محفوظة 2026</p>
+        <!-- Footer Premium -->
+        <footer class="premium-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>📚 التعليم العلمي</h4>
+                    <p>محاكاة متقدمة لفهم الكهرباء الساكنة والظواهر الكهربائية</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🎓 للطلاب</h4>
+                    <p>تطبيق تعليمي تفاعلي لطلاب الفيزياء بالتعليم المتوسط</p>
+                </div>
+                <div class="footer-section">
+                    <h4>⚙️ التقنية</h4>
+                    <p>HTML5 Canvas • WebGL • JavaScript ES6</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>🎨 تصميم احترافي | 🔬 محتوى علمي | 📱 متوافق مع الجوال</p>
+            </div>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="premium-script.js"></script>
 </body>
 </html>
