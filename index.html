@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاكاة طرق التكهرب</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ محاكاة طرق التكهرب الثلاث</h1>
+            <p class="subtitle">اكتشف كيف تتكهرب الأجسام بطرق مختلفة</p>
+        </header>
+
+        <div class="methods-selector">
+            <button class="method-btn active" data-method="friction">🔄 الدلك</button>
+            <button class="method-btn" data-method="contact">🤝 اللمس</button>
+            <button class="method-btn" data-method="induction">📡 التأثير</button>
+        </div>
+
+        <!-- طريقة الدلك -->
+        <div class="method-section active" id="friction-section">
+            <h2>طريقة الدلك (Friction)</h2>
+            <p class="description">
+                عند دلك جسم معزول بجسم آخر، تنتقل الإلكترونات من جسم إلى آخر مما يسبب تكهربهما.
+            </p>
+            
+            <div class="simulation-area">
+                <div class="instruction">
+                    👉 اسحب فوق الكرة لدلكها (استخدم الماوس أو اللمس)
+                </div>
+                
+                <canvas id="frictionCanvas" width="500" height="300"></canvas>
+                
+                <div class="controls">
+                    <button id="frictionReset" class="btn-reset">🔄 إعادة تعيين</button>
+                    <div class="info-box">
+                        <p><strong>عدد الإلكترونات المنقولة:</strong> <span id="frictionElectrons">0</span></p>
+                        <p><strong>الشحنة:</strong> <span id="frictionCharge">محايد</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h3>📚 التفسير العلمي:</h3>
+                <ul>
+                    <li>الدلك يسبب احتكاك بين الذرات</li>
+                    <li>الاحتكاك يعطي طاقة للإلكترونات</li>
+                    <li>الإلكترونات تنتقل من مادة إلى أخرى</li>
+                    <li>النتيجة: تكهرب الجسمين بشحنات متعاكسة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- طريقة اللمس -->
+        <div class="method-section" id="contact-section">
+            <h2>طريقة اللمس (Conduction)</h2>
+            <p class="description">
+                عند لمس جسم مكهرب لجسم محايد، تنتقل الشحنات مباشرة بينهما.
+            </p>
+            
+            <div class="simulation-area">
+                <div class="instruction">
+                    👉 اضغط على الكرة المكهربة لمس الكرة المحايدة
+                </div>
+                
+                <canvas id="contactCanvas" width="500" height="300"></canvas>
+                
+                <div class="controls">
+                    <button id="contactCharge" class="btn-action">⚡ شحن الكرة الأولى</button>
+                    <button id="contactTouch" class="btn-action" disabled>🤝 أوصل الكرتين</button>
+                    <button id="contactReset" class="btn-reset">🔄 إعادة تعيين</button>
+                    <div class="info-box">
+                        <p><strong>كرة 1:</strong> <span id="contactBall1">محايد</span></p>
+                        <p><strong>كرة 2:</strong> <span id="contactBall2">محايد</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h3>📚 التفسير العلمي:</h3>
+                <ul>
+                    <li>الجسم المكهرب يحتوي على شحنات زائدة</li>
+                    <li>عند اللمس، تنتقل الشحنات مباشرة</li>
+                    <li>الشحنات توزعت بين الجسمين</li>
+                    <li>كلا الجسمين يصبح مكهربا بنفس نوع الشحنة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- طريقة التأثير -->
+        <div class="method-section" id="induction-section">
+            <h2>طريقة التأثير (Induction)</h2>
+            <p class="description">
+                عند اقتراب جسم مكهرب من جسم محايد، تتحرك الإلكترونات بداخله دون انتقال مباشر.
+            </p>
+            
+            <div class="simulation-area">
+                <div class="instruction">
+                    👉 حرك الكرة المكهربة بالقرب من الكرة المحايدة
+                </div>
+                
+                <canvas id="inductionCanvas" width="500" height="300"></canvas>
+                
+                <div class="controls">
+                    <button id="inductionCharge" class="btn-action">⚡ شحن الكرة</button>
+                    <button id="inductionReset" class="btn-reset">🔄 إعادة تعيين</button>
+                    <div class="info-box">
+                        <p><strong>مسافة القرب:</strong> <span id="inductionDistance">بعيدة</span></p>
+                        <p><strong>الكرة المحايدة:</strong> <span id="inductionNeutral">محايد</span></p>
+                        <p><strong>ملاحظة:</strong> الكرة تعود محايد عند الابتعاد</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h3>📚 التفسير العلمي:</h3>
+                <ul>
+                    <li>المجال الكهربائي للجسم المكهرب يؤثر على الجسم المحايد</li>
+                    <li>الإلكترونات تتحرك داخل الجسم لكن لا تنتقل</li>
+                    <li>يحدث فصل للشحنات (أحد الجانبين موجب والآخر سالب)</li>
+                    <li>عند الابتعاد، تعود الإلكترونات لحالتها الطبيعية</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>🎓 تطبيق تعليمي لطلاب الفيزياء | حقوق محفوظة 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
